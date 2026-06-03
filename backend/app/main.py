@@ -19,6 +19,9 @@ from app.routes.match import (
     router as match_router
 )
 
+from app.routes.ranking import (
+    router as ranking_router
+)
 
 Base.metadata.create_all(bind=engine)
 
@@ -34,6 +37,10 @@ app.include_router(auth_router)
 
 app.include_router(
     match_router
+)
+
+app.include_router(
+    ranking_router
 )
 
 

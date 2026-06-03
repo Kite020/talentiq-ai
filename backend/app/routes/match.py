@@ -21,6 +21,10 @@ from app.services.matching_service import (
     get_skill_gap
 )
 
+from app.services.recruiter_summary import (
+    generate_recruiter_summary
+)
+
 router = APIRouter()
 
 
@@ -72,6 +76,15 @@ def match_resume_to_job(
         job.description
     )
 
+    summary = generate_recruiter_summary(
+
+        score,
+
+        skill_report["skills_found"],
+
+        skill_report["missing_skills"]
+    )
+
     return {
 
         "resume_id":
@@ -91,5 +104,8 @@ def match_resume_to_job(
         "missing_skills":
         skill_report[
             "missing_skills"
-        ]
+        ],
+
+        "recruiter_summary":
+        summary
     }
