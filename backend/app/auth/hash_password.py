@@ -1,14 +1,14 @@
-from passlib.context import CryptContext
+# Temporary hashing implementation.
+# Will upgrade to secure password hashing later.
 
-pwd_context = CryptContext(
-    schemes=["bcrypt"],
-    deprecated="auto"
-)
+from hashlib import sha256
 
 
 def hash_password(password):
 
-    return pwd_context.hash(password)
+    return sha256(
+        password.encode()
+    ).hexdigest()
 
 
 def verify_password(
@@ -16,7 +16,10 @@ def verify_password(
     hashed_password
 ):
 
-    return pwd_context.verify(
-        plain_password,
+    return (
+        sha256(
+            plain_password.encode()
+        ).hexdigest()
+        ==
         hashed_password
     )
