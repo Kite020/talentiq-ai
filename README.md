@@ -120,12 +120,6 @@ PostgreSQL Database (Neon)
 
 * PostgreSQL (Neon)
 
-### Deployment
-
-* Vercel
-* Render
-* Neon
-
 ### AI & Data Processing
 
 * Scikit-learn
@@ -305,18 +299,3 @@ LinkedIn: YOUR_LINKEDIN_URL
 
 GitHub: YOUR_GITHUB_URL
 
----
-
-## ⭐ Acknowledgements
-
-This project was developed as a full-stack AI-powered recruitment platform to demonstrate skills in:
-
-* Frontend Development
-* Backend Development
-* Database Design
-* Authentication & Security
-* REST API Development
-* AI/NLP-based Resume Screening
-* Cloud Deployment
-
-If you found this project useful, please consider giving it a ⭐ on GitHub.
