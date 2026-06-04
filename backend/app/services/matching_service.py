@@ -46,6 +46,15 @@ def get_skill_gap(
         job_text
     )
 
+    matched_skills = [
+
+        skill
+
+        for skill in job_skills
+
+        if skill in resume_skills
+    ]
+
     missing_skills = [
 
         skill
@@ -58,7 +67,7 @@ def get_skill_gap(
     return {
 
         "skills_found":
-        resume_skills,
+        matched_skills,
 
         "missing_skills":
         missing_skills
