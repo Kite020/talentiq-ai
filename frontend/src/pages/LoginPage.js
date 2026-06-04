@@ -41,12 +41,18 @@ function LoginPage() {
 
     } catch (error) {
 
+      console.log("LOGIN ERROR");
+    
+      console.log(error);
+    
+      console.log(error.response);
+    
+      console.log(error.response?.data);
+    
       alert(
-        "Invalid credentials"
-      );
-
-      console.error(
-        error
+        JSON.stringify(
+          error.response?.data || error.message
+        )
       );
     }
   };
