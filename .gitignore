@@ -20,3 +20,4 @@ backend/uploads/
 
 # VS Code
 .vscode/
+.DS_Store

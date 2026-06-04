@@ -49,3 +49,21 @@ def create_job(
 
         "title": new_job.title
     }
+
+@router.get("/jobs")
+def get_all_jobs(
+
+    db: Session = Depends(get_db),
+
+    current_user=Depends(
+        get_current_user
+    )
+):
+
+    jobs = db.query(
+        JobDescription
+    ).filter(
+    JobDescription.user_id == current_user.id
+).all()
+
+    return jobs

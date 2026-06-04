@@ -11,6 +11,9 @@ from app.models.job_model import JobDescription
 from app.services.matching_service import (
     calculate_match_score
 )
+from app.auth.get_current_user import (
+    get_current_user
+)
 
 router = APIRouter()
 
@@ -20,7 +23,10 @@ def rank_candidates(
 
     job_id: int,
 
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user=Depends(
+        get_current_user
+    )
 ):
 
     job = db.query(
@@ -38,6 +44,8 @@ def rank_candidates(
 
     resumes = db.query(
         Resume
+    ).filter(
+        Resume.user_id == current_user.id
     ).all()
 
     rankings = []

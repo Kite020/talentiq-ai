@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+from fastapi.middleware.cors import CORSMiddleware
 from app.database import Base
 from app.database import engine
 from app.models.job_model import JobDescription
@@ -22,6 +23,10 @@ from app.routes.match import (
 from app.routes.ranking import (
     router as ranking_router
 )
+from app.routes.dashboard import (
+    router as dashboard_router
+)
+from app.models.match_result import MatchResult
 
 Base.metadata.create_all(bind=engine)
 
@@ -41,6 +46,24 @@ app.include_router(
 
 app.include_router(
     ranking_router
+)
+
+app.include_router(
+    dashboard_router
+)
+
+app.add_middleware(
+    CORSMiddleware,
+
+    allow_origins=[
+        "http://localhost:3000"
+    ],
+
+    allow_credentials=True,
+
+    allow_methods=["*"],
+
+    allow_headers=["*"]
 )
 
 
