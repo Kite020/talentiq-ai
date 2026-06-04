@@ -295,7 +295,7 @@ GET /dashboard-stats
 
 Aspiring Software Engineer | Full Stack Developer
 
-LinkedIn: YOUR_LINKEDIN_URL
+LinkedIn: https://www.linkedin.com/in/ankita-dash-3377b1245/
 
-GitHub: YOUR_GITHUB_URL
+GitHub: https://github.com/Kite020
 
