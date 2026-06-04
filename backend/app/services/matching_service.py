@@ -1,5 +1,5 @@
-from sentence_transformers import (
-    SentenceTransformer
+from sklearn.feature_extraction.text import (
+    TfidfVectorizer
 )
 
 from sklearn.metrics.pairwise import (
@@ -10,39 +10,28 @@ from app.services.skill_extractor import (
     extract_skills
 )
 
-model = None
-
-def get_model():
-
-    global model
-
-    if model is None:
-
-        model = SentenceTransformer(
-            "all-MiniLM-L6-v2"
-        )
-
-    return model
-
 
 def calculate_match_score(
     resume_text,
     job_text
 ):
 
-    embeddings = get_model().encode(
+    vectorizer = TfidfVectorizer()
+
+    vectors = vectorizer.fit_transform(
         [resume_text, job_text]
     )
 
     score = cosine_similarity(
-        [embeddings[0]],
-        [embeddings[1]]
+        vectors[0],
+        vectors[1]
     )[0][0]
 
     return round(
         float(score * 100),
         2
     )
+
 
 def get_skill_gap(
     resume_text,

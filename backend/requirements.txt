@@ -8,7 +8,5 @@ python-jose
 passlib[bcrypt]
 bcrypt
 PyMuPDF
-sentence-transformers
 scikit-learn
 numpy
-torch
