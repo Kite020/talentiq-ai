@@ -10,9 +10,19 @@ from app.services.skill_extractor import (
     extract_skills
 )
 
-model = SentenceTransformer(
-    "all-MiniLM-L6-v2"
-)
+model = None
+
+def get_model():
+
+    global model
+
+    if model is None:
+
+        model = SentenceTransformer(
+            "all-MiniLM-L6-v2"
+        )
+
+    return model
 
 
 def calculate_match_score(
@@ -20,7 +30,7 @@ def calculate_match_score(
     job_text
 ):
 
-    embeddings = model.encode(
+    embeddings = get_model().encode(
         [resume_text, job_text]
     )
 
