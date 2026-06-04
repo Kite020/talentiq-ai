@@ -162,7 +162,7 @@ Talent-IQ-AI/
 ### Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Talent-IQ-AI.git
+git clone https://github.com/Kite020/Talent-IQ-AI.git
 
 cd Talent-IQ-AI
 ```
