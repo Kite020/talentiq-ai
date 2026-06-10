@@ -13,6 +13,11 @@ function MatchPage() {
   const [jobId, setJobId] = useState("");
 
   const [result, setResult] = useState(null);
+  const [pageLoading, setPageLoading] =
+    useState(true);
+
+  const [matchLoading, setMatchLoading] =
+    useState(false);
 
   useEffect(() => {
 
@@ -23,53 +28,74 @@ function MatchPage() {
 
   const fetchResumes = async () => {
 
-    const token =
-      localStorage.getItem("token");
-
-    const response =
-      await axios.get(
-
-        "https://talentiq-ai-backend.onrender.com/resumes",
-
-        {
-          headers: {
-            Authorization:
-              `Bearer ${token}`
+    try {
+  
+      const token =
+        localStorage.getItem("token");
+  
+      const response =
+        await axios.get(
+  
+          "http://127.0.0.1:8000/resumes",
+  
+          {
+            headers: {
+              Authorization:
+                `Bearer ${token}`
+            }
           }
-        }
+        );
+  
+      setResumes(
+        response.data
       );
-
-    setResumes(
-      response.data
-    );
+  
+    } catch (error) {
+  
+      console.error(error);
+  
+    }
   };
 
   const fetchJobs = async () => {
 
-    const token =
-      localStorage.getItem("token");
-
-    const response =
-      await axios.get(
-
-        "https://talentiq-ai-backend.onrender.com/jobs",
-
-        {
-          headers: {
-            Authorization:
-              `Bearer ${token}`
+    try {
+  
+      const token =
+        localStorage.getItem("token");
+  
+      const response =
+        await axios.get(
+  
+          "http://127.0.0.1:8000/jobs",
+  
+          {
+            headers: {
+              Authorization:
+                `Bearer ${token}`
+            }
           }
-        }
+        );
+  
+      setJobs(
+        response.data
       );
-
-    setJobs(
-      response.data
-    );
+  
+    } catch (error) {
+  
+      console.error(error);
+  
+    } finally {
+  
+      setPageLoading(false);
+  
+    }
   };
 
   const runMatch = async () => {
 
     try {
+      setMatchLoading(true);
 
       const token =
         localStorage.getItem("token");
@@ -77,7 +103,7 @@ function MatchPage() {
       const response =
         await axios.get(
 
-          `https://talentiq-ai-backend.onrender.com/match/${resumeId}/${jobId}`,
+          `http://127.0.0.1:8000/match/${resumeId}/${jobId}`,
 
           {
             headers: {
@@ -98,8 +124,36 @@ function MatchPage() {
       alert(
         "Match failed"
       );
+    } finally {
+      setMatchLoading(false);
     }
   };
+
+  if (pageLoading) {
+
+    return (
+  
+      <div
+        className="
+        d-flex
+        justify-content-center
+        align-items-center
+        vh-100"
+      >
+  
+        <div
+          className="
+          spinner-border
+          text-primary"
+          role="status"
+        >
+        </div>
+  
+      </div>
+  
+    );
+  
+  }
 
   return (
 
@@ -187,8 +241,20 @@ function MatchPage() {
 
               onClick={runMatch}
 
+              disabled={matchLoading}
+
             >
-              Run Match Analysis
+
+              {
+
+                matchLoading
+
+                  ? "Analyzing Resume..."
+
+                  : "Run Match Analysis"
+
+              }
+
             </button>
 
           </div>

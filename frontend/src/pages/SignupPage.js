@@ -22,7 +22,7 @@ function SignupPage() {
 
       await axios.post(
 
-        "https://talentiq-ai-backend.onrender.com/signup",
+        "http://127.0.0.1:8000/signup",
 
         {
           username,

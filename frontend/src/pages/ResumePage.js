@@ -7,6 +7,8 @@ import Navbar from "../components/Navbar";
 function ResumePage() {
 
   const [resumes, setResumes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
 
   const [file, setFile] = useState(null);
   useEffect(() => {
@@ -24,7 +26,7 @@ function ResumePage() {
   
       const response = await axios.get(
   
-        "https://talentiq-ai-backend.onrender.com/resumes",
+        "http://127.0.0.1:8000/resumes",
   
         {
           headers: {
@@ -41,6 +43,8 @@ function ResumePage() {
     } catch (error) {
   
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,13 +65,16 @@ function ResumePage() {
     );
 
     try {
+      setUploading(true);
 
       const token =
         localStorage.getItem("token");
 
+      
+
       await axios.post(
 
-        "https://talentiq-ai-backend.onrender.com/upload-resume",
+        "http://127.0.0.1:8000/upload-resume",
 
         formData,
 
@@ -80,6 +87,7 @@ function ResumePage() {
           }
         }
       );
+      setUploading(false);
 
       alert(
         "Resume uploaded successfully"
@@ -106,6 +114,28 @@ function ResumePage() {
       }
     }
   };
+  if (loading) {
+
+    return (
+  
+      <div
+        className="
+        d-flex
+        justify-content-center
+        mt-5"
+      >
+  
+        <div
+          className="
+          spinner-border
+          text-primary"
+        >
+        </div>
+  
+      </div>
+  
+    );
+  }
 
   return (
 
@@ -137,10 +167,25 @@ function ResumePage() {
             />
 
             <button
+
               className="btn btn-primary"
+
               onClick={handleUpload}
+
+              disabled={uploading}
+
             >
-              Upload Resume
+
+              {
+
+                uploading
+
+                  ? "Uploading..."
+
+                  : "Upload Resume"
+
+              }
+
             </button>
 
           </div>

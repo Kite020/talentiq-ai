@@ -12,6 +12,9 @@ function JobsPage() {
     useState("");
 
   const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [creatingJob, setCreatingJob] =
+  useState(false);
 
   const fetchJobs = async () => {
 
@@ -22,7 +25,7 @@ function JobsPage() {
 
       const response = await axios.get(
 
-        "https://talentiq-ai-backend.onrender.com/jobs",
+        "http://127.0.0.1:8000/jobs",
 
         {
           headers: {
@@ -40,6 +43,10 @@ function JobsPage() {
 
       console.error(error);
 
+    } finally {
+
+      setLoading(false);
+    
     }
   };
 
@@ -52,13 +59,14 @@ function JobsPage() {
   const createJob = async () => {
 
     try {
+      setCreatingJob(true);
 
       const token =
         localStorage.getItem("token");
 
       await axios.post(
 
-        "https://talentiq-ai-backend.onrender.com/create-job",
+        "http://127.0.0.1:8000/create-job",
 
         {
           title,
@@ -90,8 +98,18 @@ function JobsPage() {
       alert(
         "Job creation failed"
       );
+    } finally {
+      setCreatingJob(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="text-center mt-5">
+        <div className="spinner-border text-primary"></div>
+      </div>
+    );
+  }
 
   return (
 
@@ -157,8 +175,20 @@ function JobsPage() {
 
               onClick={createJob}
 
+              disabled={creatingJob}
+
             >
-              Create Job
+
+              {
+
+                creatingJob
+
+                  ? "Creating Job..."
+
+                  : "Create Job"
+
+              }
+
             </button>
 
           </div>

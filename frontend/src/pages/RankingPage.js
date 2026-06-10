@@ -14,6 +14,12 @@ function RankingPage() {
   const [rankings, setRankings] =
     useState([]);
 
+  const [pageLoading, setPageLoading] =
+    useState(true);
+  
+  const [rankingLoading, setRankingLoading] =
+    useState(false);
+
   useEffect(() => {
 
     fetchJobs();
@@ -30,7 +36,7 @@ function RankingPage() {
       const response =
         await axios.get(
 
-          "https://talentiq-ai-backend.onrender.com/jobs",
+          "http://127.0.0.1:8000/jobs",
 
           {
             headers: {
@@ -48,12 +54,18 @@ function RankingPage() {
 
       console.error(error);
 
+    } finally {
+
+      setPageLoading(false);
+    
     }
   };
 
   const rankCandidates = async () => {
 
     try {
+      setRankingLoading(true);
+
 
       const token =
         localStorage.getItem("token");
@@ -61,7 +73,7 @@ function RankingPage() {
       const response =
         await axios.get(
 
-          `https://talentiq-ai-backend.onrender.com/rank/${selectedJob}`,
+          `http://127.0.0.1:8000/rank/${selectedJob}`,
 
           {
             headers: {
@@ -82,6 +94,8 @@ function RankingPage() {
       alert(
         "Ranking failed"
       );
+    } finally {
+      setRankingLoading(false);
     }
   };
 
@@ -101,6 +115,14 @@ function RankingPage() {
 
     return "🏅";
   };
+
+  if (pageLoading) {
+    return (
+      <div className="text-center mt-5">
+        <div className="spinner-border text-primary"></div>
+      </div>
+    );
+  }
 
   return (
 
@@ -159,8 +181,20 @@ function RankingPage() {
 
               onClick={rankCandidates}
 
+              disabled={rankingLoading}
+
             >
-              Rank Candidates
+
+              {
+
+                rankingLoading
+
+                  ? "Ranking Candidates..."
+
+                  : "Rank Candidates"
+
+              }
+
             </button>
 
           </div>

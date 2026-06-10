@@ -20,7 +20,7 @@ function LoginPage() {
       const response =
         await axios.post(
 
-          "https://talentiq-ai-backend.onrender.com/login",
+          "http://127.0.0.1:8000/login",
 
           {
             email,

@@ -28,6 +28,8 @@ function DashboardPage() {
     average_match_score: 0
   });
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
 
     fetchStats();
@@ -37,15 +39,13 @@ function DashboardPage() {
   const fetchStats = async () => {
 
     try {
-
+  
       const token =
         localStorage.getItem("token");
-
+  
       const response =
         await axios.get(
-
-          "https://talentiq-ai-backend.onrender.com/dashboard-stats",
-
+          "http://127.0.0.1:8000/dashboard-stats",
           {
             headers: {
               Authorization:
@@ -53,15 +53,17 @@ function DashboardPage() {
             }
           }
         );
-
-      setStats(
-        response.data
-      );
-
+  
+      setStats(response.data);
+  
     } catch (error) {
-
+  
       console.error(error);
-
+  
+    } finally {
+  
+      setLoading(false);
+  
     }
   };
 
@@ -83,6 +85,31 @@ function DashboardPage() {
     }
 
   ];
+
+  if (loading) {
+
+    return (
+  
+      <div
+        className="
+        d-flex
+        justify-content-center
+        align-items-center
+        vh-100"
+      >
+  
+        <div
+          className="
+          spinner-border
+          text-primary"
+          role="status"
+        >
+        </div>
+  
+      </div>
+  
+    );
+  }
 
   return (
 
