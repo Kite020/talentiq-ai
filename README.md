@@ -16,13 +16,13 @@ TalentIQ AI automates the recruitment screening process by analyzing resumes aga
 
 The platform allows recruiters to:
 
-* Upload resumes
-* Create job descriptions
-* Match candidates with jobs
-* Analyze skill gaps
-* Rank candidates based on suitability
-* View recruiter-focused dashboards
-* Generate interview questions automatically
+- Upload resumes
+- Create job descriptions
+- Match candidates with jobs
+- Analyze skill gaps
+- Rank candidates based on suitability
+- View recruiter-focused dashboards
+- Generate interview questions automatically
 
 ---
 
@@ -30,58 +30,58 @@ The platform allows recruiters to:
 
 ### 🔐 Authentication & Authorization
 
-* User Signup
-* User Login
-* JWT Authentication
-* Protected API Routes
-* Multi-user Support
+- User Signup
+- User Login
+- JWT Authentication
+- Protected API Routes
+- Multi-user Support
 
 ### 📄 Resume Management
 
-* PDF Resume Upload
-* Automatic Resume Parsing
-* Resume Storage in Database
-* Duplicate Resume Prevention
+- PDF Resume Upload
+- Automatic Resume Parsing
+- Resume Storage in Database
+- Duplicate Resume Prevention
 
 ### 💼 Job Management
 
-* Create Job Descriptions
-* Store Job Profiles
-* User-specific Job Listings
+- Create Job Descriptions
+- Store Job Profiles
+- User-specific Job Listings
 
 ### 🤖 AI Resume Matching
 
-* Semantic Resume Matching
-* Skill Extraction
-* Skill Gap Analysis
-* Match Score Calculation
-* Candidate Suitability Evaluation
+- Semantic Resume Matching
+- Skill Extraction
+- Skill Gap Analysis
+- Match Score Calculation
+- Candidate Suitability Evaluation
 
 ### 📊 Dashboard Analytics
 
-* Total Resumes
-* Total Jobs
-* Total Matches
-* Average Match Score
-* Match Distribution Analysis
+- Total Resumes
+- Total Jobs
+- Total Matches
+- Average Match Score
+- Match Distribution Analysis
 
 ### 🏆 Candidate Ranking
 
-* Rank Candidates for a Job
-* Sort by Match Score
-* Recruiter-friendly Candidate Comparison
+- Rank Candidates for a Job
+- Sort by Match Score
+- Recruiter-friendly Candidate Comparison
 
 ### 🎯 Recruiter Insights
 
-* Strengths Analysis
-* Weakness Analysis
-* Hiring Recommendation
-* Recruiter Summary
+- Strengths Analysis
+- Weakness Analysis
+- Hiring Recommendation
+- Recruiter Summary
 
 ### 🎤 Interview Preparation
 
-* AI-generated Interview Questions
-* Skill-based Question Suggestions
+- AI-generated Interview Questions
+- Skill-based Question Suggestions
 
 ---
 
@@ -103,29 +103,29 @@ PostgreSQL Database (Neon)
 
 ### Frontend
 
-* React.js
-* React Router
-* Axios
-* Bootstrap
-* Recharts
+- React.js
+- React Router
+- Axios
+- Bootstrap
+- Recharts
 
 ### Backend
 
-* FastAPI
-* SQLAlchemy
-* JWT Authentication
-* PyMuPDF
+- FastAPI
+- SQLAlchemy
+- JWT Authentication
+- PyMuPDF
 
 ### Database
 
-* PostgreSQL (Neon)
+- PostgreSQL (Neon)
 
 ### AI & Data Processing
 
-* Scikit-learn
-* TF-IDF Vectorization
-* Cosine Similarity
-* NLP-based Skill Extraction
+- Scikit-learn
+- TF-IDF Vectorization
+- Cosine Similarity
+- NLP-based Skill Extraction
 
 ---
 
@@ -186,7 +186,7 @@ uvicorn app.main:app --reload
 Backend will run at:
 
 ```text
-http://127.0.0.1:8000
+https://talentiq-ai-backend.onrender.com
 ```
 
 ---
@@ -268,24 +268,24 @@ GET /dashboard-stats
 
 ## 🔒 Security Features
 
-* JWT Authentication
-* Protected Routes
-* User-specific Data Isolation
-* Secure Password Hashing
-* Authorization-based Access Control
+- JWT Authentication
+- Protected Routes
+- User-specific Data Isolation
+- Secure Password Hashing
+- Authorization-based Access Control
 
 ---
 
 ## 🎯 Future Enhancements
 
-* Resume Recommendation Engine
-* Advanced NLP Models
-* Resume Improvement Suggestions
-* Email Notifications
-* Recruiter Collaboration Tools
-* Advanced Analytics Dashboard
-* Role-based Access Control
-* Token Refresh Mechanism
+- Resume Recommendation Engine
+- Advanced NLP Models
+- Resume Improvement Suggestions
+- Email Notifications
+- Recruiter Collaboration Tools
+- Advanced Analytics Dashboard
+- Role-based Access Control
+- Token Refresh Mechanism
 
 ---
 
@@ -298,4 +298,3 @@ Aspiring Software Engineer | Full Stack Developer
 LinkedIn: https://www.linkedin.com/in/ankita-dash-3377b1245/
 
 GitHub: https://github.com/Kite020
-

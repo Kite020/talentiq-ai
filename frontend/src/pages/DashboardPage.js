@@ -45,7 +45,7 @@ function DashboardPage() {
   
       const response =
         await axios.get(
-          "http://127.0.0.1:8000/dashboard-stats",
+          "https://talentiq-ai-backend.onrender.com/dashboard-stats",
           {
             headers: {
               Authorization:

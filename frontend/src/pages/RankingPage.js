@@ -36,7 +36,7 @@ function RankingPage() {
       const response =
         await axios.get(
 
-          "http://127.0.0.1:8000/jobs",
+          "https://talentiq-ai-backend.onrender.com/jobs",
 
           {
             headers: {
@@ -73,7 +73,7 @@ function RankingPage() {
       const response =
         await axios.get(
 
-          `http://127.0.0.1:8000/rank/${selectedJob}`,
+          `https://talentiq-ai-backend.onrender.com/rank/${selectedJob}`,
 
           {
             headers: {

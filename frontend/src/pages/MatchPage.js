@@ -36,7 +36,7 @@ function MatchPage() {
       const response =
         await axios.get(
   
-          "http://127.0.0.1:8000/resumes",
+          "https://talentiq-ai-backend.onrender.com/resumes",
   
           {
             headers: {
@@ -67,7 +67,7 @@ function MatchPage() {
       const response =
         await axios.get(
   
-          "http://127.0.0.1:8000/jobs",
+          "https://talentiq-ai-backend.onrender.com/jobs",
   
           {
             headers: {
@@ -103,7 +103,7 @@ function MatchPage() {
       const response =
         await axios.get(
 
-          `http://127.0.0.1:8000/match/${resumeId}/${jobId}`,
+          `https://talentiq-ai-backend.onrender.com/match/${resumeId}/${jobId}`,
 
           {
             headers: {
